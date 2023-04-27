@@ -1,1 +1,1 @@
-# rosa-oscal-ssp
+# oscal-automation-libs
