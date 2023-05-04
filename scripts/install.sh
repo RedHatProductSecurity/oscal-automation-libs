@@ -4,7 +4,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
 source "$SCRIPT_DIR/dependencies.sh"
 
-build () {
+function build () {
     install_go
     install_cosign
     install_gcr
@@ -12,7 +12,7 @@ build () {
     install_pandoc
 }
 
-install_demo_utils () {
+function install_demo_utils () {
     install_gh_cli
     install_epel
     install_utils
@@ -20,4 +20,4 @@ install_demo_utils () {
 }
 
 
-$@
+"$@"

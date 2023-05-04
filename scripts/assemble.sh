@@ -5,7 +5,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 source "$SCRIPT_DIR/logging.sh"
 source "$SCRIPT_DIR/trestle.sh"
 
-assemble_catalogs() {
+function assemble_catalogs() {
 version_tag=$1
 catalogs=$(find ./markdown/catalogs -type d | wc -l)
 if [ "$catalogs" -gt 0 ]; then
@@ -24,7 +24,7 @@ else
 fi
 }
 
-assemble_components() {
+function assemble_components() {
 version_tag=$1
 components=$(find ./markdown/components -mindepth 1 -type d | wc -l)
 if [ "$components" -gt 0 ]; then
@@ -43,7 +43,7 @@ else
 fi
 }
 
-assemble_profiles() {
+function assemble_profiles() {
 version_tag=$1
 profiles=$(find ./markdown/profiles -mindepth 1 -type d | wc -l)
 if [ "$profiles" -gt 0 ]; then
@@ -62,7 +62,7 @@ else
 fi
 }
 
-assemble_ssps() {
+function assemble_ssps() {
 version_tag=$1
 ssps=$(find ./markdown/system-security-plans -mindepth 1 -type d | wc -l)
 if [ "$ssps" -gt 0 ]; then

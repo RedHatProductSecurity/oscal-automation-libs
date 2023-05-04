@@ -4,8 +4,8 @@ SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
 source "$SCRIPT_DIR/logging.sh"
 
-trestleDirs=("assessment-plans" "assessment-results" "catalogs" "component-definitions" "dist" "markdown" "plan-of-action-and-milestones" "profiles" "system-security-plans")
-
+# Declaring a constant to represent the directory names managed with trestle
+declare -r trestleDirs=("assessment-plans" "assessment-results" "catalogs" "component-definitions" "dist" "markdown" "plan-of-action-and-milestones" "profiles" "system-security-plans")
 
 function update () {
   git config user.name "github-actions"
