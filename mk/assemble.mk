@@ -4,7 +4,7 @@
 
 scripts_dir :=$(shell realpath $(dir $(lastword $(MAKEFILE_LIST)))../scripts)
 
-assemble: assemble-catalogs assemble-profiles assemble-cd assemble-ssps
+assemble: assemble-catalogs assemble-profiles assemble-cd
 .PHONY: assemble
 
 assemble-catalogs:
