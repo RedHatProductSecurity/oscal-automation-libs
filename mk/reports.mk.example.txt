@@ -16,3 +16,7 @@ generate-gap-report:
 generate-customer-report:
 	$(call customer-report,my_ssp,my_prof,$(TEMPLATE))
 .PHONY: generate-customer-report
+
+generate-auditing-report:
+	$(call auditing-report,my_ssp,my_prof,$(TEMPLATE))
+.PHONY: generate-auditing-report
