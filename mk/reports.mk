@@ -29,4 +29,10 @@ define customer-report
 	&& trestle author jinja -i $(3) -ssp crm_ssp -p $(2) -o customer-report.md
 endef
 
-
+# $1 - input ssp
+# $2 - profile name
+# $3 - template
+define export-report
+	@source $(scripts_dir)/trestle.sh && trestle author ssp-filter --name $(1) -o exports_ssp -co "customer-configured,customer-provided,system-specific" \
+	&& trestle author jinja -i $(3) -ssp exports_ssp -p $(2) -o exports-report.md
+endef
