@@ -54,7 +54,7 @@ cmarkgfm==0.6.0
     # via
     #   -r requirements.in
     #   compliance-trestle
-compliance-trestle==2.1.0
+compliance-trestle @ git+https://github.com/IBM/compliance-trestle@5f59a7fc7cf8b88a9f77ba4554dd493acff67114
     # via -r requirements.in
 cryptography==39.0.2
     # via
