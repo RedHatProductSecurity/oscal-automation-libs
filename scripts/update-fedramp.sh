@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+set -eu
+
 # shellcheck disable=SC2128
 SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 

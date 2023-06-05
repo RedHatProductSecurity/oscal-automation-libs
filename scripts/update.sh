@@ -1,39 +1,39 @@
 #!/bin/bash
 
+set -eu
+
+####################################################
+# Script: update.sh
+# Description: It checks if there are any uncommited changes in a repo
+#              with a specific pattern. It create a new branch and pull
+#              request if there are changes.
+# Usage: ./update.sh "My commit"
+# Note: Useful for regenerating downstream OSCAL content
+####################################################
+
 # shellcheck disable=2128
 SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
 # shellcheck disable=SC1091
 source "$SCRIPT_DIR/logging.sh"
+source "$SCRIPT_DIR/auto-commit-push.sh"
 
-# Declaring a constant to represent the directory names managed with trestle
-declare -r trestleDirs=("assessment-plans" "assessment-results" "catalogs" "component-definitions" "dist" "markdown" "plan-of-action-and-milestones" "profiles" "system-security-plans")
-
-function update () {
-  git config user.name "github-actions"
-  git config user.email "github-actions@github.com"
-
-  local COMMIT_BODY="${1:-"Sync OSCAL Content"}"
-  local COMMIT_TITLE="chore: automatic content update"
+function main() {
+  local COMMIT_TITLE="${1:-"Sync OSCAL Content"}"
+  local COMMIT_BODY="chore: automatic content update"
   git checkout -b "autoupdate_$GITHUB_RUN_ID"
+
   if [ -z "$(git status --porcelain)" ]; then
     run_log 0 "Nothing to commit"
   else
-    git diff
-    for i in "${trestleDirs[@]}"
-    do
-      echo "Adding directory $i"
-    	git add "$i"
-    done
+    add_files '*.md *.json'
     if [ -z "$(git status --untracked-files=no --porcelain)" ]; then
        run_log 0 "Nothing to commit"
     else
-       git commit -m "$COMMIT_TITLE"
-       git push -u origin "autoupdate_$GITHUB_RUN_ID"
-       run_log 0 "$COMMIT_BODY"
-       gh pr create -t "$COMMIT_TITLE" -b "$COMMIT_BODY" -B "main" -H "autoupdate_$GITHUB_RUN_ID" --draft
+       local_commit "$COMMIT_BODY"
+       create_branch_pull_request "$COMMIT_TITLE" "$COMMIT_BODY" "autoupdate_$GITHUB_RUN_ID" 
     fi
   fi
 }
 
-update "$@"
+main "$@"
