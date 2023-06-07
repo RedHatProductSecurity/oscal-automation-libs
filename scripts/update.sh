@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# shellcheck disable=2128
 SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/logging.sh"
 
 # Declaring a constant to represent the directory names managed with trestle
