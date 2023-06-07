@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# shellcheck disable=SC2128
 SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/logging.sh"
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/trestle.sh"
 
 function generate_ssp() {
@@ -10,7 +13,9 @@ function generate_ssp() {
     vars=("comps" "output" "profile")
     var_check "${vars[@]}"
 
+    # shellcheck disable=SC2154
     run_log 0 "Generating Markdown for ${output}"
+    # shellcheck disable=SC2154
     trestle author ssp-generate --compdefs "$comps" --profile "$profile" --output markdown/system-security-plans/"$output"
 }
 
