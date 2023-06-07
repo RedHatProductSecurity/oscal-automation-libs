@@ -16,6 +16,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
 # shellcheck disable=SC1091
 source "$SCRIPT_DIR/logging.sh"
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/auto-commit-push.sh"
 
 function main() {

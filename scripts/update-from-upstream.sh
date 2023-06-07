@@ -11,9 +11,12 @@ set -eu
 # Note: Useful for keeping upstream profiles and catalogs up to date
 ####################################################
 
+# shellcheck disable=SC2128
 SCRIPT_DIR="$(realpath "$(dirname "$BASH_SOURCE")")"
 
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/logging.sh"
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/auto-commit-push.sh"
 
 
