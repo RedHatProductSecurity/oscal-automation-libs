@@ -38,8 +38,8 @@ function create_ssp() {
 function var_check() {
     checkvars=("$@")
     for i in "${checkvars[@]}"; do
-      if [ -z ${!i} ]; then
-        run_log 1 "Required variable $"$i" not set"
+      if [ -z "${!i}" ]; then
+        run_log 1 "Required variable $i not set"
       fi
     done
 }
