@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 set -eu
 
 # shellcheck disable=SC2128

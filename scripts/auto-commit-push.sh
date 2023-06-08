@@ -58,24 +58,3 @@ function generate_destination_path() {
 
     echo "$SOURCE_PATH"
 }
-
-# Function to copy files matching a pattern from one directory to another
-function copy_files_with_pattern() {
-    local SOURCEDIR="${1:?"source directory is required"}"
-    local DESTDIR="${2:?"destination directory is required"}"
-
-    # Store the array of patterns
-    local patterns=("${@:3}")
-
-    # Store the array of parent directories to remove
-    local remove_dirs=("${@:4}")
-
-    # Copy files matching each pattern from source to destination
-    for pattern in "${patterns[@]}"; do
-        find "$SOURCEDIR" -type f -name "$pattern" | while read -r source_file; do
-            dest_file=$(generate_destination_path "$source_file" "${remove_dirs[@]}")
-            mkdir -p "$DESTDIR/$(dirname "$dest_file")"
-            cp "$source_file" "$DESTDIR/$dest_file"
-        done
-    done
-}
