@@ -17,7 +17,7 @@ function update_nist () {
   import_nist_rev5_catalog
   import_nist_rev4_catalog
   # shellcheck disable=SC1091
-  source "$SCRIPT_DIR/update.sh" "Sync NIST OSCAL content"
+  source "$SCRIPT_DIR/update.sh" -c "Sync NIST OSCAL content" "catalogs/*"
 }
 
 update_nist "$@"

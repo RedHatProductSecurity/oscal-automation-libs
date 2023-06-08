@@ -15,7 +15,7 @@ function update_fedramp () {
   rm -rf "profiles/fedramp_rev4_moderate"
   import_fedramp_rev4_moderate_profiles
   # shellcheck disable=SC1091
-  source "$SCRIPT_DIR/update.sh" "Sync FedRAMP"
+  source "$SCRIPT_DIR/update.sh" -c "Sync FedRAMP" "profiles/*"
 }
 
 update_fedramp "$@"
