@@ -31,7 +31,7 @@ function update_ssp_index() {
 
     # Create the index file if it doesn't exist
     if [ ! -f "$index_file" ]; then
-        new_index $index_file
+        new_index "$index_file"
     else 
         # Read the index file into the associative array
         while IFS=":" read -r key value; do
@@ -48,7 +48,7 @@ function update_ssp_index() {
     if [ "${index[$key]}" != "$new_value" ]; then
         index["$key"]=$new_value
         rm "$index_file"
-        new_index $index_file
+        new_index "$index_file"
         for key in "${!index[@]}"; do
             echo "$key:${index[$key]}" >> "$index_file"
         done
@@ -59,7 +59,7 @@ function update_ssp_index() {
     else
     index["$key"]=$new_value
     rm "$index_file"
-    new_index $index_file
+    new_index "$index_file"
     for key in "${!index[@]}"; do
         echo "$key:${index[$key]}" >> "$index_file"
     done
