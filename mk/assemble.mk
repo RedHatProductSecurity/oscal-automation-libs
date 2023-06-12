@@ -18,3 +18,7 @@ assemble-profiles:
 assemble-cd:
 	@source $(scripts_dir)/assemble.sh && assemble_components
 .PHONY: assemble-cd
+
+assemble-ssps:
+	@source $(scripts_dir)/assemble.sh && assemble_ssps
+.PHONY: assemble-ssps
