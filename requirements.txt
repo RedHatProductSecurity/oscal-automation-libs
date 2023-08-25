@@ -26,7 +26,7 @@ black==23.1.0
     # via
     #   -r requirements.in
     #   datamodel-code-generator
-certifi==2022.12.7
+certifi==2023.7.22
     # via
     #   -r requirements.in
     #   httpcore
