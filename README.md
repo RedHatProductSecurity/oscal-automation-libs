@@ -1,4 +1,6 @@
-# oscal-automation-libs
+# oscal-automation-libs (DEPRECATED)
+
+> #### ** This repository has been deprecated.  Please refer to [trestle-bot](https://github.com/RedHatProductSecurity/trestle-bot) for an updated OSCAL automation tool. **
 
 A common repository to share code for Makefiles, helper scripts, and IaC to support repositories with OSCAL content.
 
