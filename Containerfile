@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi AS build
+FROM registry.access.redhat.com/ubi8/ubi:latest AS build
 
 WORKDIR /demo
 
@@ -9,7 +9,7 @@ ENV BIN_DIR=/demo/bin/ PATH=$PATH:BIN_DIR
 
 RUN ./scripts/install.sh build
 
-FROM registry.access.redhat.com/ubi8/python-38 AS demo
+FROM registry.access.redhat.com/ubi8/python-38:latest AS demo
 
 COPY requirements.txt requirements.txt
 
